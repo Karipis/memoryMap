@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Changed from 0 to border-box */
+    font-family: "Pixelify Sans";
+    cursor: url('./images/cursor.png'), auto;
+}
+
+body {
+    background: rgb(49, 49, 49);
+    overflow-y: hidden;
+}
+
+#map {
+    position: absolute;
+    /* Keep the map absolute */
+    top: 5%;
+    bottom: 5%;
+    z-index: 0;
+    /* Lower z-index for the map */
+    right: 5%;
+    width: 70%;
+    height: 90vh;
+    border-radius: 20px;
+    transition: all 1.5s ease;
+    box-shadow: 15px 15px 0px rgb(85, 85, 85);
+}
+
+
+#note {
+    z-index: 1;
+
+}
+
+
+#timer {
+    z-index: 2;
+
+}
+
+#timer,
+#note {
+    font-family: monospace;
+    position: absolute;
+    /* Changed to absolute for overlay */
+    top: 0;
+    /* Align to the top */
+    left: 0;
+    /* Align to the left */
+    background-color: rgb(48, 48, 48);
+    height: 100vh;
+    /* Full height */
+    width: 100%;
+    /* Full width */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: all 1.5s ease;
+
+}
+
+#timer p,
+#note p {
+    font-size: 32px;
+    text-align: center;
+    color: white;
+    width: 30%;
+}
+
+
+
+@media (max-width: 600px) {
+
+    #timer p,
+    #note p {
+        font-size: 20px;
+        /* Smaller font size for phones */
+        width: 80%;
+    }
+
+    li {
+        font-size: 11px;
+        /* Smaller font size for phones */
+
+    }
+
+    #options {
+        width: 27%;
+    }
+
+    #map {
+        position: absolute;
+        /* Keep the map absolute */
+        top: 2%;
+        bottom: 2%;
+        z-index: 0;
+        /* Lower z-index for the map */
+        right: 2%;
+        width: 70%;
+        height: 90vh;
+        filter: grayscale(40%);
+        border-radius: 20px;
+        transition: all 1.5s ease;
+        box-shadow: 15px 15px 0px rgb(85, 85, 85);
+    }
+}
+
+#note #back {
+    color: rgb(255, 255, 255);
+    background: rgb(19, 19, 19);
+    box-shadow: 5px 5px 0px rgb(190, 190, 190);
+}
+
+#music,
+#home_button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background: rgb(63, 63, 63);
+    border: none;
+    box-shadow: 4px 0px 0px rgba(197, 197, 197, 0.74);
+    color: white;
+    transition: all 0.7s ease;
+}
+
+#home_button {
+    right: 65px;
+}
+
+#music:hover,
+#home_button:hover {
+    color: rgba(255, 213, 122, 0.74);
+    box-shadow: 4px 4px 0px rgba(255, 213, 122, 0.74);
+
+}
+
+#timer button,
+#note button {
+    border: none;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    background: rgb(100, 100, 100);
+    box-shadow: 5px 5px 0px rgb(0, 0, 0);
+    color: white;
+    transition: all 0.7s ease;
+}
+
+#timer button:hover,
+#note button:hover {
+    transform: scale(1.1);
+}
+
+
+#options {
+    font-family: monospace;
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    overflow-y: auto;
+    direction: rtl;
+    /* Right-to-left text direction */
+}
+
+#options h3 {
+    width: 50%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#options ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#options::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 5px;
+    background-color: #bbbbbb;
+    /* Background color of scrollbar track */
+}
+
+/* Scrollbar track */
+#options::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    /* Track color */
+    border-radius: 10px;
+}
+
+
+#options::-webkit-scrollbar-thumb {
+    background-color: #686868;
+    /* Thumb color */
+    border-radius: 10px;
+    border: 1px solid #adadad;
+    /* Adds a border around the thumb */
+}
+
+#options #random {
+    background: rgb(39, 39, 39);
+    transition: all 0.9s ease;
+}
+
+
+#options li {
+    width: 60%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+    background: rgb(63, 63, 63);
+    box-shadow: 5px 5px 0px rgba(197, 197, 197, 0.74);
+    margin-top: 25px;
+    list-style-type: none;
+    transition: all 0.9s ease;
+    direction: ltr;
+}
+
+#options li:hover {
+    box-shadow: 5px 5px 0px rgba(255, 213, 122, 0.74);
+    transform: scale(0.95);
+}
+
+
+.leaflet-popup-content {
+    max-height: 350px;
+
+    /* Set a maximum height for the popup */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
+
+.leaflet-control-attribution {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.leaflet-popup-content-wrapper {
+    width: 300px;
+}
+
+.leaflet-popup-content {
+    width: 87% !important;
+}
+
+#map,
+#map .leaflet-container,
+#map .leaflet-marker-icon,
+#map .leaflet-popup-content-wrapper {
+    cursor: url('./images/cursor.png'), auto !important;
+}
